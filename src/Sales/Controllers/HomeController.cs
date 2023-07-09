@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Sales.Models;
+using Sales.Models.ViewModels;
 
 namespace Sales.Controllers;
 
@@ -15,6 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewData["Message"] = "Salles Web MVC App from C#";
+        ViewData["Email"] = "leonardo@gmail.com";
+        
         return View();
     }
 
