@@ -1,0 +1,19 @@
+version: '3.9'
+
+volumes:
+  mysqldata:
+    driver: local
+
+services:
+  db:
+    container_name: db_course
+    image: mysql
+    environment:
+      - MYSQL_USER=example
+      - MYSQL_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_DATABASE=course
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysqldata:/data/mysql
