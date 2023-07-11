@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Sales.Models;
+using Sales.Models.Enuns;
 
 namespace Sales.Data;
 
@@ -8,5 +10,7 @@ public class DatabaseContext : DbContext
     {
     }
 
-    public DbSet<Sales.Models.Department>? Departments { get; set; }
+    public DbSet<Department>? Departments { get; set; }
+    public DbSet<Seller>? Sellers { get; set; }
+    public DbSet<SalesRecord>? SalesRecords { get; set; }
 }
