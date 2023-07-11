@@ -10,8 +10,8 @@ using Sales.Data;
 namespace Sales.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230710171114_initial")]
-    partial class initial
+    [Migration("20230711010059_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,8 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseMySql(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DatabaseContext")), 
-builder => builder.MigrationsAssembly("Sales")));
+
+builder.Configuration.AddJsonFile("appsettings.json");
+
+var stringConnection = builder.Configuration.GetConnectionString("DatabaseContext");
+
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseMySql(stringConnection, new MySqlServerVersion(ServerVersion.AutoDetect(stringConnection))));
 
 var app = builder.Build();
 
