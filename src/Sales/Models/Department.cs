@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Sales.Models;
 
 public class Department
