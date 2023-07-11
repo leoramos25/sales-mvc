@@ -8,21 +8,21 @@ public class Seller
     {
     }
 
-    public Seller(int id, string? name, string? email, decimal baseSalary, DateTime birthDate, Department? department)
+    public Seller(int id, string? name, string? email, DateTime birthDate, decimal baseSalary, Department? department)
     {
         Id = id;
         Name = name;
         Email = email;
-        BaseSalary = baseSalary;
         BirthDate = birthDate;
+        BaseSalary = baseSalary;
         Department = department;
     }
 
     public int Id { get; set; }
     public string? Name { get; set; }
     public string? Email { get; set; }
-    public decimal BaseSalary { get; set; }
     public DateTime BirthDate { get; set; }
+    public decimal BaseSalary { get; set; }
     public Department? Department { get; set; }
     public ICollection<SalesRecord> Sales { get; private set; } = new List<SalesRecord>();
 
