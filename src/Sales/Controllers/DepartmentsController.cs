@@ -28,7 +28,7 @@ public class DepartmentsController : Controller
             return NotFound();
         }
 
-        var department = await _context.Departments.FindAsync(id);
+        var department = await _context.Departments.FirstOrDefaultAsync(m => m.Id == id);
         if (department == null)
         {
             return NotFound();
