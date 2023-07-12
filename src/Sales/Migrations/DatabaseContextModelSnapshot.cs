@@ -9,111 +9,111 @@ using Sales.Data;
 
 namespace Sales.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+  [DbContext(typeof(DatabaseContext))]
+  partial class DatabaseContextModelSnapshot : ModelSnapshot
+  {
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+      modelBuilder
+          .HasAnnotation("ProductVersion", "7.0.8")
+          .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Sales.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+      modelBuilder.Entity("Sales.Models.Department", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
+            b.Property<string>("Name")
+                      .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Departments");
-                });
+            b.ToTable("Departments");
+          });
 
-            modelBuilder.Entity("Sales.Models.SalesRecord", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+      modelBuilder.Entity("Sales.Models.SalesRecord", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(65,30)");
+            b.Property<decimal>("Amount")
+                      .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
+            b.Property<DateTime>("Date")
+                      .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("SellerId")
-                        .HasColumnType("int");
+            b.Property<int?>("SellerId")
+                      .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+            b.Property<int>("Status")
+                      .HasColumnType("int");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("SellerId");
+            b.HasIndex("SellerId");
 
-                    b.ToTable("SalesRecords");
-                });
+            b.ToTable("SalesRecords");
+          });
 
-            modelBuilder.Entity("Sales.Models.Seller", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+      modelBuilder.Entity("Sales.Models.Seller", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int");
 
-                    b.Property<decimal>("BaseSalary")
-                        .HasColumnType("decimal(65,30)");
+            b.Property<decimal>("BaseSalary")
+                      .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime(6)");
+            b.Property<DateTime>("BirthDate")
+                      .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("DepartmentId")
-                        .HasColumnType("int");
+            b.Property<int?>("DepartmentId")
+                      .HasColumnType("int");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
+            b.Property<string>("Email")
+                      .HasColumnType("longtext");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
+            b.Property<string>("Name")
+                      .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+            b.HasIndex("DepartmentId");
 
-                    b.ToTable("Sellers");
-                });
+            b.ToTable("Sellers");
+          });
 
-            modelBuilder.Entity("Sales.Models.SalesRecord", b =>
-                {
-                    b.HasOne("Sales.Models.Seller", "Seller")
-                        .WithMany("Sales")
-                        .HasForeignKey("SellerId");
+      modelBuilder.Entity("Sales.Models.SalesRecord", b =>
+          {
+            b.HasOne("Sales.Models.Seller", "Seller")
+                      .WithMany("Sales")
+                      .HasForeignKey("SellerId");
 
-                    b.Navigation("Seller");
-                });
+            b.Navigation("Seller");
+          });
 
-            modelBuilder.Entity("Sales.Models.Seller", b =>
-                {
-                    b.HasOne("Sales.Models.Department", "Department")
-                        .WithMany("Sellers")
-                        .HasForeignKey("DepartmentId");
+      modelBuilder.Entity("Sales.Models.Seller", b =>
+          {
+            b.HasOne("Sales.Models.Department", "Department")
+                      .WithMany("Sellers")
+                      .HasForeignKey("DepartmentId");
 
-                    b.Navigation("Department");
-                });
+            b.Navigation("Department");
+          });
 
-            modelBuilder.Entity("Sales.Models.Department", b =>
-                {
-                    b.Navigation("Sellers");
-                });
+      modelBuilder.Entity("Sales.Models.Department", b =>
+          {
+            b.Navigation("Sellers");
+          });
 
-            modelBuilder.Entity("Sales.Models.Seller", b =>
-                {
-                    b.Navigation("Sales");
-                });
+      modelBuilder.Entity("Sales.Models.Seller", b =>
+          {
+            b.Navigation("Sales");
+          });
 #pragma warning restore 612, 618
-        }
     }
+  }
 }

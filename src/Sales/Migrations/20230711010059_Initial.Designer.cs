@@ -9,32 +9,32 @@ using Sales.Data;
 
 namespace Sales.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
-    [Migration("20230711010059_Initial")]
-    partial class Initial
+  [DbContext(typeof(DatabaseContext))]
+  [Migration("20230711010059_Initial")]
+  partial class Initial
+  {
+    /// <inheritdoc />
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+      modelBuilder
+          .HasAnnotation("ProductVersion", "7.0.8")
+          .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Sales.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+      modelBuilder.Entity("Sales.Models.Department", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
+            b.Property<string>("Name")
+                      .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Departments");
-                });
+            b.ToTable("Departments");
+          });
 #pragma warning restore 612, 618
-        }
     }
+  }
 }
